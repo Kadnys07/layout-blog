@@ -1,0 +1,102 @@
+/* Corpo e grid básico */
+body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* sidebar fixa 250px + conteúdo */
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar content"
+      "sidebar footer";
+    min-height: 100vh;
+  }
+  
+  /* Sidebar fixa e 100% da altura */
+  .sidebar {
+    grid-area: sidebar;
+    background: #ecf0f1;
+    padding: 20px;
+    position: fixed;   /* fixa no canto */
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;     /* altura total da viewport */
+    overflow-y: auto;  /* rolagem se necessário */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Ajustes para header, content e footer para "abrir espaço" à direita da sidebar fixa */
+  .header {
+    grid-area: header;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    margin-left:50px; /* desloca para direita, largura da sidebar */
+    text-align: center;
+  }
+  
+  .content {
+    grid-area: content;
+    padding: 20px;
+    background: #f9f9f9;
+    margin-left:50px; /* desloca para direita */
+    min-height: calc(100vh - 100px); /* ajustar altura considerando header e footer */
+    overflow-y: auto; /* rolagem se necessário */
+    justify-content: center;
+  }
+  
+  .footer {
+    grid-area: footer;
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-left: 50px; /* desloca para direita */
+  }
+  
+  /* Menu sidebar */
+  .sidebar nav h2 {
+    margin-bottom: 15px;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .sidebar nav li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar nav a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+  
+  .sidebar nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsivo: sidebar vira topo */
+  @media (max-width: 768px) {
+    .sidebar {
+      position: static;
+      width: 100%;
+      height: auto;
+      box-shadow: none;
+    }
+  
+    .header, .content, .footer {
+      margin-left: 0;
+    }
+  
+    .grid-container {
+      display: block;
+    }
+  }
+  
