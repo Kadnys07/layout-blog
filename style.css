@@ -1,6 +1,6 @@
 /* Corpo e grid básico */
 body, html {
-    margin: 0; padding: 0; height: 100%;
+    margin: 0; padding: 0; 
     font-family: Arial, sans-serif;
   }
   
@@ -41,12 +41,14 @@ body, html {
   
   .content {
     grid-area: content;
-    padding: 20px;
+    flex-direction: column; /* permite conteúdo flexível */
     background: #f9f9f9;
     margin-left:50px; /* desloca para direita */
     min-height: calc(100vh - 100px); /* ajustar altura considerando header e footer */
     overflow-y: auto; /* rolagem se necessário */
+    display: flex;
     justify-content: center;
+    text-align: center;
   }
   
   .footer {
